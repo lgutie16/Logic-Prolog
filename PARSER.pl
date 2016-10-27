@@ -1,6 +1,10 @@
+addList([], L, L).
+addLlist([H|T], L, L1) :- add(H, L2, L1), addList(T, L, L2).
+
+
+
 browse(File) :-
-		write('Enter name of file to save list'), read(List),  
-        
+		write('Enter name of file to save list'), read(List),         
         seeing(Old),      /* save for later */ 
         see(user),
         
@@ -23,13 +27,19 @@ browse(File) :-
 		      write(N),
 		      write('] ],'), nl, fail;
 		      write('['), 
+		      Term =..E,
 		      write(Term),
-		      write('],'), fail
-		    )   
+		      write('],'),
+		      tell('herbran.txt'),
+		      write(E), fail	      
+		    )
+
 	    ),
 	    seen,
+	    told ,	    
 	    write('[]'), nl,
 	    write(']'),
+	   
 	    told, 	    
 	    see(Old). 
 
