@@ -1,3 +1,7 @@
-eval(A,U):- eval(T,U).
-eval(y,i).
-eval(y,y).
+eval(A+B,CV):-eval(A,AV),eval(B,BV).
+eval(A-B,CV):-eval(A,AV),eval(B,BV).
+eval(A*B,CV):-eval(A,AV),eval(B,BV).
+eval(a,b).
+eval(c,c).
+eval(e,f).
+eval(g,h).
