@@ -4,34 +4,31 @@ mergeList([],[Y],[Y]).
 mergeList([X|List1],[Y|List2],[X,Y|List]) :- mergeList(List1,List2,List).
 
 
-herbrand(File) :-
+herbran(File) :-
       seeing(Old),      /* save for later */
       see(user),
-      tell('herbrand.txt'),
-      write('['),
-      see(File),
+      see('listas.txt'),
       repeat,
       read(Term),
         ( Term == end_of_file -> true ;
-          Term =..Lista,
-          mergeList(Lista, Lista, L),
-          write(L)
-      ),
+          Term =..E,
+          tell('herbran.txt'),
+          arg(2, E, Z),
+          write(Z), fail
+        ),      
       seen,
-      write(']'),nl,
       told,
       see(Old).
 
 
-
 browse(File) :-
-       write('Enter name of file to save list'), read(List),
-        seeing(Old),      /* save for later */
-        see(user),
+      write('Enter name of file to save list'), read(List),
+      seeing(Old),      /* save for later */
+      see(user),
 
-        tell(List),
-        write('['),
-        see(File),
+      tell(List),
+      write('['),
+      see(File),
       repeat,
       read(Term),
         ( Term == end_of_file -> true ;
@@ -47,19 +44,17 @@ browse(File) :-
           write(', ['),
           write(N),
           write('] ],'), nl, fail;
-          Term =..E,
-          tell('herbran.txt'),
-          arg(2, E, Z),
-          write(Z), fail
+          write('['),
+          write(Term),
+          write('],'), fail         
         )
-
       ),
       seen,
-      told ,
       write('[]'), nl,
       write(']'),
       told,
-      see(Old).
+      see(Old),
+      herbran(File).
 
 make_file :-
        telling(Old),      /* current write output */
