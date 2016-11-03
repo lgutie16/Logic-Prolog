@@ -47,12 +47,10 @@ browse(File) :-
           write(', ['),
           write(N),
           write('] ],'), nl, fail;
-          write('['),
           Term =..E,
-          write(Term),
-          write('],'),
           tell('herbran.txt'),
-          write(E), fail
+          arg(2, E, Z),
+          write(Z), fail
         )
 
       ),
