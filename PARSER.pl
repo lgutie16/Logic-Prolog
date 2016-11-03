@@ -1,13 +1,7 @@
-mergeList([],[],[]).
-mergeList([X],[],[X]).
-mergeList([],[Y],[Y]).
-mergeList([X|List1],[Y|List2],[X,Y|List]) :- mergeList(List1,List2,List).
-
-
 herbran(File) :-
       seeing(Old),      /* save for later */
       see(user),
-      see('listas.txt'),
+      see(File),
       repeat,
       read(Term),
         ( Term == end_of_file -> true ;
